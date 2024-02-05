@@ -20,8 +20,16 @@ After installation of Pyxis (https://github.com/NVIDIA/pyxis), launch a prebuilt
 srun --container-image=ghcr.io/huggingface/text-generation-inference:1.4-rocm
 ```
 
-### Option B: manual installation of LLM image on CycleCloud compute node.
+### Option B: manual installation of LLM application on CycleCloud compute node.
 
+First, install anaconda
+
+```bash
+wget https://repo.anaconda.com/archive/Anaconda3-2023.09-0-Linux-x86_64.sh
+bash Anaconda3-2023.09-0-Linux-x86_64.sh
+```
+
+Run the following bash shell to setup TGI application from source code
 ```bash
 bash tgi_conda_setup.sh
 ```
