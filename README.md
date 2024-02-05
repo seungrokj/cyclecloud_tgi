@@ -2,6 +2,10 @@
 
 This repo shows how to setup LLM inference example workload on Azure's CycleCloud + Slurm. This repo assumes that you already setup CycleCloud cluster with Slurm and this repo shows how to build a LLM inference workload on top of the Slurm compute node (worker node). I used Text Generation Inference (TGI) (https://github.com/huggingface/text-generation-inference) from HuggingFace as an LLM inference example. As this example is NOT VERIFIED on CycleCloud instance, you might need to manually modify some codes in tgi_conda_setup.sh.
 
+<a ><img src="assets/cyclecloud_llm.jpg" width="100%"></a>
+
+The image is modified from (https://techcommunity.microsoft.com/t5/azure-high-performance-computing/enabling-job-accounting-for-slurm-with-azure-cyclecloud-8-2-and/ba-p/3413803)
+
 ## Prerequisites
 
 To setup CycleCLoud + Slurm, refer to the official Azure's documentation and tutorials. 
@@ -31,4 +35,3 @@ python tgi_uxui.py
 ```
 
 <a ><img src="assets/tgi_uxui_demo.jpg" width="100%"></a>
-
