@@ -35,7 +35,7 @@ sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --
 
 python -m pip install --upgrade pip
 python -m pip install torch --index-url https://download.pytorch.org/whl/test/rocm5.7
-python -m pip install einops
+python -m pip install einops pandas ray pyarrow
 
 export PYTORCH_ROCM_ARCH="gfx90a"
 export HUGGINGFACE_HUB_CACHE=./
