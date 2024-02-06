@@ -8,7 +8,11 @@ The image is modified from (https://techcommunity.microsoft.com/t5/azure-high-pe
 
 ## Prerequisites
 
-To setup CycleCLoud + Slurm, refer to the official Azure's documentation and tutorials. 
+1. To setup CycleCLoud + Slurm, refer to the official Azure's documentation and tutorials. 
+https://learn.microsoft.com/en-us/azure/cyclecloud/qs-install-marketplace?view=cyclecloud-8
+
+2. This repo is tested with ROCm5.7 and please install ROCm runtime/libraries to the compute node (worker node).
+https://rocm.docs.amd.com/en/docs-5.7.0/deploy/linux/installer/install.html#
 
 ## LLM Inference deployment on the Slurm compute node
 
@@ -107,6 +111,19 @@ python -m pip install ".[accelerate, peft]"
 cd ..
 
 ./target/release/text-generation-launcher --model-id TheBloke/Llama-2-7B-Chat-fp16 &
+```
+
+To test the TGI in the compute node (worker node)
+
+```bash
+curl 127.0.0.1:9090/generate X POST d '{"inputs":"Chocolate is good for","parameters":{"max_new_tokens":100}}' H 'Content-Type: application
+```
+
+And the corresponding response from TGI server will be like this
+
+```bash
+2024-02-06T03:08:33.664018Z  INFO generate{parameters=GenerateParameters { best_of: None, temperature: None, repetition_penalty: None, top_k: None, top_p: None, typical_p: None, do_sample: false, max_new_tokens: Some(100), return_full_text: None, stop: [], truncate: None, watermark: false, details: false, decoder_input_details: false, seed: None, top_n_tokens: None } total_time="2.520979735s" validation_time="308.477µs" queue_time="70µs" inference_time="2.520601569s" time_per_token="25.206015ms" seed="None"}: text_generation_router::server: router/src/server.rs:298: Success
+{"generated_text":" your heart, but not for your waistline\n\nChocolate is a tasty treat that has been shown to have several health benefits, including improving heart health. Studies have found that chocolate can help lower blood pressure, improve blood flow to the heart, and even reduce the risk of heart disease. However, it's important to remember that chocolate is high in calories and sugar, which can lead to weight gain if consumed in excess. So while"}(tgi)
 ```
 
 ## LLM Inference uxui lanuch

@@ -50,10 +50,9 @@ cp ../server/Makefile-vllm Makefile
 sed -i 's/pip /python -m pip /g' Makefile
 make install-vllm-rocm
 
-# conflicts with conda gcc env
-#cp ../server/Makefile-flash-att-v2 Makefile
-#sed -i 's/pip /python -m pip /g' Makefile
-#make install-flash-attention-v2-rocm
+cp ../server/Makefile-flash-att-v2 Makefile
+sed -i 's/pip /python -m pip /g' Makefile
+make install-flash-attention-v2-rocm
 
 cp -rf ../server/custom_kernels/ .
 cd custom_kernels/
@@ -75,4 +74,3 @@ python -m pip install ".[accelerate, peft]"
 cd ..
 
 ./target/release/text-generation-launcher --model-id TheBloke/Llama-2-7B-Chat-fp16 &
-
