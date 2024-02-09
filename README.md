@@ -115,7 +115,7 @@ cd ..
 To test the TGI in the compute node (worker node)
 
 ```bash
-curl 127.0.0.1:9090/generate X POST d '{"inputs":"Chocolate is good for","parameters":{"max_new_tokens":100}}' H 'Content-Type: application
+curl 127.0.0.1:9090/generate X POST d '{"inputs":"Chocolate is good for","parameters":{"max_new_tokens":100}}' H 'Content-Type: application/json'
 ```
 
 And the corresponding response from TGI server will be like this
@@ -130,6 +130,7 @@ And the corresponding response from TGI server will be like this
 Once LLM Inference launched on the Slurm compute node, you can launch an additional uxui application so that users can access to the LLM instance. This demo is from (https://huggingface.co/docs/text-generation-inference/basic_tutorials/consuming_tgi#gradio)
 
 ```bash
+python -m pip install gradio
 python tgi_uxui.py
 ```
 
