@@ -51,6 +51,7 @@ sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
 sudo unzip -o $PROTOC_ZIP -d /usr/local 'include/*'
 rm -f $PROTOC_ZIP
 
+apt install pkg-config
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 cargo build --release
@@ -115,7 +116,7 @@ cd ..
 To test the TGI in the compute node (worker node)
 
 ```bash
-curl 127.0.0.1:9090/generate X POST d '{"inputs":"Chocolate is good for","parameters":{"max_new_tokens":100}}' H 'Content-Type: application/json'
+curl 127.0.0.1:9090/generate -X POST -d '{"inputs":"Chocolate is good for","parameters":{"max_new_tokens":100}}' -H 'Content-Type: application/json'
 ```
 
 And the corresponding response from TGI server will be like this
